@@ -37,28 +37,45 @@ a.right = Tree(5)
 
 
 class Solution(object):
-    def binaryTreePaths(self, root):
-        """
-        :type root: TreeNode
-        :rtype: List[str]
-        """
+    # def binaryTreePaths(self, root):
+    #     """
+    #     :type root: TreeNode
+    #     :rtype: List[str]
+    #     """
+    #     if not root:
+    #         return root
+    #     path = ''
+    #     list_path = []
+    #     self.dfs(root, path, list_path)
+    #     return list_path
+    #
+    # def dfs(self, root, path, list_path):
+    #     if not root.left and not root.right:
+    #         list_path.append(path + str(root.val))
+    #         return
+    #     path += str(root.val) + "->"
+    #     if root.left is not None:
+    #         self.dfs(root.left, path, list_path)
+    #     if root.right is not None:
+    #         self.dfs(root.right, path, list_path)
+    def BinaryTreePaths(self, root):
         if not root:
             return root
         path = ''
-        list_path = []
-        self.asd(root, path, list_path)
-        return list_path
+        result = []
+        self.dfs(root, path, result)
+        return result
 
-    def asd(self, root, path, list_path):
-        if not root.left and not root.right:
-            list_path.append(path + str(root.val))
+    def dfs(self, root, path, result):
+        if root.left is None and root.right is None:
+            result.append(path + str(root.val))
             return
         path += str(root.val) + "->"
-        if root.left is not None:
-            self.asd(root.left, path, list_path)
-        if root.right is not None:
-            self.asd(root.right, path, list_path)
+        if root.left is None:
+            self.dfs(root.right, path, result)
+        if root.right is None:
+            self.dfs(root.left, path, result)
 
-a = Solution()
-result = a.binaryTreePaths(root)
+b = Solution()
+result = b.BinaryTreePaths(root)
 print(result)

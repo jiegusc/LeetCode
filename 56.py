@@ -1,3 +1,4 @@
+from typing import List
 class Solution(object):
     def merge(self, intervals):
         """
@@ -79,3 +80,21 @@ a = [1, 3, 6, 4, 1, 2]
 #     return max_num
 
 
+# def merge(intervals: List[List[int]]) -> List[List[int]]:
+#     if not intervals:
+#         return intervals
+#     result = [intervals[0]]
+#     intervals = sorted(intervals, key=lambda x: x[0])
+#     i = 1
+#     while i < len(intervals):
+#         if intervals[i][0] <= result[-1][1]:
+#             result[-1][1] = max(intervals[i][1], result[-1][1])
+#         else:
+#             result.append(intervals[i])
+#         i += 1
+#     return result
+#
+#
+# b = [[1,4],[0,4]]
+#
+# print(merge(b))
